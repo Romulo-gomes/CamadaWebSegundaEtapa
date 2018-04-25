@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo"> Edição de Pacientes</ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:growl/>
+                <div align="center">
+                <p:panelGrid columns="2">
+                    <f:facet name="header">
+                        <p:outputLabel value="Edição de Pacientes"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:commandButton value="Cancelar"
+                                             action="#{controlePaciente.cancelar()}"
+                                             ajax="false" immediate="true"/>
+                            <p:commandButton value="Salvar" icon="ui-icon-disk"
+                                             ajax="false" action="#{controlePaciente.salvar()}"/>
+                        </div>
+                    </f:facet>
+                    <p:outputLabel value="ID"/>
+                    <p:inputText value="#{controlePaciente.objeto.id}" readonly="true" size="5"/>
+                    <p:outputLabel value="Nome:"/>
+                    <p:inputText value="#{controlePaciente.objeto.nome}" size="40"/>
+                    <p:outputLabel value="Data de Nascimento"/>
+                    <p:calendar value="#{controlePaciente.objeto.dataNascimento}" pattern="dd/MM/yyyy"
+                                locale="pt_BR" size="12" mask="true">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:calendar> 
+                    <p:outputLabel value="Telefone:"/>
+                    <p:inputText value="#{controlePaciente.objeto.telefone}" size="40"/>
+                    <p:outputLabel value="Sexo"/>
+                    <p:inputText value="#{controlePaciente.objeto.sexo}" size="10"/>
+                    <p:outputLabel value="Historico"/>
+                    <p:inputTextarea value="#{controlePaciente.objeto.historico}" cols="40" rows="10"/>
+                    <p:outputLabel value="Peso (KG)"/>
+                    <p:inputText value="#{controlePaciente.objeto.peso}"  size="5"/>
+                    <p:outputLabel value="Altura (M)"/>
+                    <p:inputText value="#{controlePaciente.objeto.altura}" size="5"/>
+                </p:panelGrid>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+

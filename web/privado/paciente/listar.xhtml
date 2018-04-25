@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo"> Manutençao dos médicos</ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:growl/>
+                <p:commandButton value="Novo" action="#{controlePaciente.novo()}"
+                                 ajax="false" icon="ui-icon-plus"/>
+                <p:dataTable value="#{controlePaciente.dao.lista}" var="obj">
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{obj.id}"/>
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <p:outputLabel value="#{obj.nome}"/>
+                    </p:column>
+                    <p:column headerText="Data Nascimento">
+                        <p:outputLabel value="#{obj.dataNascimento}">
+                            <f:converter converterId="converterCalendar"/>
+                        </p:outputLabel>
+                    </p:column>
+                    <p:column headerText="Telefone">
+                        <p:outputLabel value="#{obj.telefone}"/>
+                    </p:column>
+                    <p:column headerText="Sexo">
+                        <p:outputLabel value="#{obj.sexo}"/>
+                    </p:column>
+                    <p:column headerText="Histórico">
+                        <p:outputLabel value="#{obj.historico}"/>
+                    </p:column>
+                    <p:column headerText="Peso">
+                        <p:outputLabel value="#{obj.peso}"/>
+                    </p:column>
+                    <p:column headerText="Altura">
+                        <p:outputLabel value="#{obj.altura}"/>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <div align="center">
+                            <p:commandButton action="#{controleMedico.editar(obj.id)}"
+                                             ajax="false" icon="ui-icon-pencil"
+                                             title="Editar"/>
+                            <p:commandButton action="#{controleMedico.remover(obj.id)}"
+                                             ajax="false" icon="ui-icon-trash"
+                                             title="Remover"
+                                             onclick="if(!confirm('Confirma a exclusão?')) return false"/>
+                        </div>   
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
