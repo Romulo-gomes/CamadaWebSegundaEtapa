@@ -41,10 +41,10 @@
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton action="#{controleMedico.editar(obj.id)}"
+                            <p:commandButton action="#{controlePaciente.editar(obj.id)}"
                                              ajax="false" icon="ui-icon-pencil"
                                              title="Editar"/>
-                            <p:commandButton action="#{controleMedico.remover(obj.id)}"
+                            <p:commandButton action="#{controlePaciente.remover(obj.id)}"
                                              ajax="false" icon="ui-icon-trash"
                                              title="Remover"
                                              onclick="if(!confirm('Confirma a exclusão?')) return false"/>
