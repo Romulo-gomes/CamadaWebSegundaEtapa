@@ -32,6 +32,15 @@
                                     <p:menuitem action="#{controleMedicamento.listar()}"
                                                 value="Manutenção de Medicamentos"
                                                 ajax="false"/>
+                                    <p:menuitem action="#{controleConsulta.listar()}"
+                                                value="Manutenção de Consulta"
+                                                ajax="false"/>
+                                </p:submenu>
+                                <p:submenu label="Relatórios">   
+                                    <p:menuitem action="#{controleConsulta.imprimeRelatorioExames()}"
+                                                value="Relatórios de Exames"
+                                                ajax="false" target="_blank"/>   
+                                    
                                 </p:submenu>
                             </p:column>
                         </p:submenu>
